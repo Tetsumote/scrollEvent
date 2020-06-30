@@ -1,16 +1,91 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .one {
+        width: 100%;
+        height: 100vh;
+        background: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .two {
+        width: 100%;
+        height: 100vh;
+        background: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .three {
+        width: 100%;
+        height: 100vh;
+        background: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
+  <body id="body">
+    <div id="app">
+      <div class="one">
+        <button>scroll</button>
+      </div>
+      <div class="two">
+        <button>scroll</button>
+      </div>
+      <div class="three">
+        <button>scroll</button>
+      </div>
+    </div>
 
-<body>
-	<div id="app"></div>
-
-	<script src="src/index.js">
-	</script>
-</body>
-
+    <script>
+      document.querySelector(".one").addEventListener("click", function() {
+        let distance = this.offsetTop;
+        window.scrollBy({
+          top:
+            document.querySelector(".one").offsetHeight -
+            window.scrollY -
+            this.offsetTop,
+          left: 0,
+          behavior: "smooth"
+        });
+      });
+      document.querySelector(".two").addEventListener("click", function() {
+        console.log(this.offsetTop, "offset top");
+        //700 - 600 - 700
+        window.scrollBy({
+          top:
+            document.querySelector(".one").offsetHeight +
+            this.offsetTop -
+            window.scrollY,
+          left: 0,
+          behavior: "smooth"
+        });
+      });
+      document.querySelector(".three").addEventListener("click", function() {
+        window.scrollBy({
+          top:
+            -document.querySelector(".one").offsetHeight -
+            window.scrollY -
+            this.offsetTop,
+          left: 0,
+          behavior: "smooth"
+        });
+      });
+      window.addEventListener("scroll", function() {
+        console.log("test");
+        console.log(window.scrollY);
+      });
+    </script>
+  </body>
 </html>
