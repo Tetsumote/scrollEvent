@@ -52,10 +52,7 @@
       document.querySelector(".one").addEventListener("click", function() {
         let distance = this.offsetTop;
         window.scrollBy({
-          top:
-            document.querySelector(".one").offsetHeight -
-            window.scrollY -
-            this.offsetTop,
+          top: this.offsetHeight - window.scrollY - this.offsetTop,
           left: 0,
           behavior: "smooth"
         });
@@ -74,10 +71,11 @@
       });
       document.querySelector(".three").addEventListener("click", function() {
         window.scrollBy({
-          top:
-            -document.querySelector(".one").offsetHeight -
+          top: -(
+            document.querySelector(".three").offsetHeight +
             window.scrollY -
-            this.offsetTop,
+            this.offsetTop
+          ),
           left: 0,
           behavior: "smooth"
         });
